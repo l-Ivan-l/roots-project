@@ -220,6 +220,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   txt_Number: {fileID: 2650167524636620606}
+  renderer: {fileID: 2650167526444009482}
+  dropAbleMat: {fileID: 2100000, guid: f7d89dcfcc6bad046a5c8afaa9e250f6, type: 2}
+  dropNotAbleMat: {fileID: 2100000, guid: dc72ec755c82d6342869e6aec3858951, type: 2}
 --- !u!65 &2650167525639613601
 BoxCollider:
   m_ObjectHideFlags: 0

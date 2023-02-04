@@ -8,6 +8,8 @@ public class Gnome : Character,IDragable
     private bool returning;
     public float returningSpeed = 7f;
 
+    private GnomeSpawn spawn;
+
     new void Awake()
     {
         character = CharacterType.GNOME;
@@ -24,6 +26,11 @@ public class Gnome : Character,IDragable
     {
         number = _number;
         canMove = true;
+    }
+
+    public void SetSpawn(GnomeSpawn _spawn)
+    {
+        spawn = _spawn;
     }
 
     public override void CharacterCollided(Collision _collision)
@@ -87,6 +94,14 @@ public class Gnome : Character,IDragable
         {
             Die();
         }
+    }
+
+    protected override void Die()
+    {
+        StopMovement();
+        if (spawn != null)
+            spawn.DelaySpawn();
+        gameObject.SetActive(false);
     }
 
     public void StartDrag(Transform refPos)

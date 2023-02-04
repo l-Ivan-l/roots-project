@@ -84,7 +84,7 @@ public abstract class Character : MonoBehaviour
         CharacterCollided(_collision);
     }
 
-    protected void Die()
+    protected virtual void Die()
     {
         StopMovement();
         gameObject.SetActive(false);

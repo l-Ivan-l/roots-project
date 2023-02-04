@@ -17,9 +17,12 @@ public class Card : MonoBehaviour,IDragable
     [Header("DropStatus")]
     [SerializeField] Renderer renderer;
     [SerializeField] Material dropAbleMat;
+    [SerializeField] Material dropNotAbleMat;
+    Material originalMat;
 
     private void Start()
     {
+        originalMat = renderer.material;
         originPos = transform.position;
         isOnDrag = false;
         collider = GetComponent<Collider>();
@@ -30,7 +33,8 @@ public class Card : MonoBehaviour,IDragable
     {
         if(isOnDrag)
         {
-            transform.position = referencePos.position;
+            Vector3 newPos = new Vector3(referencePos.position.x, referencePos.position.y + 0.2f, referencePos.position.z);
+            transform.position = newPos;
         }
     }
 
@@ -66,6 +70,7 @@ public class Card : MonoBehaviour,IDragable
             target.GetComponent<IDragable>().ActionDrop(this);
             CardEvents.Trigger(CardEventType.GetNumber, this);
         }
+        renderer.material = originalMat;
 
         transform.position = originPos;
 
@@ -78,11 +83,11 @@ public class Card : MonoBehaviour,IDragable
 
     public void OnDropAble()
     {
-        throw new System.NotImplementedException();
+        renderer.material = dropAbleMat;
     }
 
     public void OnDropNotAble()
     {
-        throw new System.NotImplementedException();
+        renderer.material = dropNotAbleMat;
     }
 }

@@ -55,10 +55,15 @@ public class DragManager : MonoBehaviour
             if(hit.collider.gameObject.GetComponent<IDragable>() != null)
             {
                 target = hit.collider.gameObject.transform;
-                Debug.Log("Object: " + hit.collider.gameObject.name);
+                if(obj_OnDrag != null)
+                {
+                    obj_OnDrag.GetComponent<IDragable>().OnDropAble();
+                }
             }
             else
             {
+                if (obj_OnDrag != null)
+                    obj_OnDrag.GetComponent<IDragable>().OnDropNotAble();
                 target = null;
             }
             
