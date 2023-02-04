@@ -12,6 +12,7 @@ public abstract class Character : MonoBehaviour
     protected CharacterType character;
     private Vector3 movementDirection;
     public float initalSpeed = 5f;
+    public float speedMultiplier = 2f;
     protected float moveSpeed;
     protected Rigidbody characterBody;
     protected int life = 2;
@@ -19,6 +20,7 @@ public abstract class Character : MonoBehaviour
     protected int number = 0;
     protected bool pastThreshold;
     private Vector3 enemyDirection;
+    private int direction = 1;
 
     public int Life
     {
@@ -39,8 +41,9 @@ public abstract class Character : MonoBehaviour
         moveSpeed = initalSpeed;
         if(character == CharacterType.MANDRAKE)
         {
-            moveSpeed *= -1f;
+            direction = -1;
         }
+        moveSpeed *= direction;
         canMove = true;
     }
 
@@ -58,13 +61,15 @@ public abstract class Character : MonoBehaviour
         }
         else if(pastThreshold)
         {
-            characterBody.velocity = new Vector3(enemyDirection.x * moveSpeed, characterBody.velocity.y, enemyDirection.z * moveSpeed);
+            characterBody.velocity = new Vector3(enemyDirection.normalized.x * (moveSpeed * speedMultiplier), characterBody.velocity.y, 
+            enemyDirection.normalized.z * (moveSpeed * speedMultiplier));
         }
     }
 
-    protected void MoveTowardsEnemy(Vector3 _enemyPosition)
+    public void MoveTowardsEnemy(Vector3 _enemyPosition)
     {
-        enemyDirection = _enemyPosition - this.transform.position;
+        StopMovement();
+        enemyDirection = (_enemyPosition - this.transform.position) * direction;
         pastThreshold = true;
     }
 

@@ -37,6 +37,12 @@ public class Mandrake : Character
                 StartCoroutine(Stunned());
             }
         }
+        if(_collision.gameObject.CompareTag("KingGnome"))
+        {
+            pastThreshold = false;
+            StopMovement();
+            Die();
+        }
     }
 
     IEnumerator Stunned()

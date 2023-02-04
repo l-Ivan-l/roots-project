@@ -19,6 +19,13 @@ public class Gnome : Character
     {
         CheckIfReturned();
     }
+
+    public void Activate(int _number)
+    {
+        number = _number;
+        canMove = true;
+    }
+
     public override void CharacterCollided(Collision _collision)
     {
         if(_collision.gameObject.CompareTag("Mandrake"))
@@ -35,6 +42,12 @@ public class Gnome : Character
             {
                 this.Damage();
             }
+        }
+        if(_collision.gameObject.CompareTag("BossMandrake"))
+        {
+            pastThreshold = false;
+            StopMovement();
+            Die();
         }
     }
 
