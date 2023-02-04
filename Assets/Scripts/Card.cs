@@ -14,6 +14,10 @@ public class Card : MonoBehaviour,IDragable
 
     private bool isOnDrag;
 
+    [Header("DropStatus")]
+    [SerializeField] Renderer renderer;
+    [SerializeField] Material dropAbleMat;
+
     private void Start()
     {
         originPos = transform.position;
@@ -70,5 +74,15 @@ public class Card : MonoBehaviour,IDragable
     public void ActionDrop(Card _card)
     {
         SumNumber(_card.GetNumber());
+    }
+
+    public void OnDropAble()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void OnDropNotAble()
+    {
+        throw new System.NotImplementedException();
     }
 }

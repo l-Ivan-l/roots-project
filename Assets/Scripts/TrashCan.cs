@@ -14,6 +14,16 @@ public class TrashCan : MonoBehaviour, IDragable
         //throw new System.NotImplementedException();
     }
 
+    public void OnDropAble()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void OnDropNotAble()
+    {
+        //throw new System.NotImplementedException();
+    }
+
     public void StartDrag(Transform refPos)
     {
         //throw new System.NotImplementedException();

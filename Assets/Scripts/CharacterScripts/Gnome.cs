@@ -101,4 +101,14 @@ public class Gnome : Character,IDragable
     {
         Activate(_card.GetNumber());
     }
+
+    public void OnDropAble()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void OnDropNotAble()
+    {
+        //throw new System.NotImplementedException();
+    }
 }
