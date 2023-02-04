@@ -40,6 +40,8 @@ public class Gnome : Character,IDragable
             } 
             else 
             {
+                Mandrake behavior = mandrake as Mandrake;
+                behavior.CanMove = true;
                 this.Damage();
             }
         }
@@ -71,7 +73,7 @@ public class Gnome : Character,IDragable
 
     bool CanDamage(Character _mandrake)
     {
-        if(number * number == _mandrake.Number)
+        if(number * number == _mandrake.Number && number != 0)
         {
             return true;
         }

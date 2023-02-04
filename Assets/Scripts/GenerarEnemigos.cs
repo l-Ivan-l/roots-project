@@ -61,6 +61,10 @@ public class GenerarEnemigos : MonoBehaviour
 
         enemie.transform.position = transform.position;
         enemie.SetActive(true);
+        
+        Mandrake mandrakeBehavior = enemie.GetComponent<Mandrake>();
+        mandrakeBehavior.Number = 9;
+        mandrakeBehavior.CanMove = true;
     }
 
 

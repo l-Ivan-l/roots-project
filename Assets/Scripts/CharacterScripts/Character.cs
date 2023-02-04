@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour
     public float speedMultiplier = 2f;
     protected float moveSpeed;
     protected Rigidbody characterBody;
-    protected int life = 2;
+    protected int life = 1;
     [SerializeField]protected bool canMove;
     [SerializeField]protected int number = 0;
     protected bool pastThreshold;

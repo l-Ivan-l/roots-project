@@ -9,6 +9,12 @@ public class Mandrake : Character
     private bool knockback;
     private float fallSpeed = 50f;
     private float stunnedTime = 1f;
+
+    public bool CanMove
+    {
+        get{return canMove;}
+        set{canMove = value;}
+    }
     
     new void Awake()
     {
