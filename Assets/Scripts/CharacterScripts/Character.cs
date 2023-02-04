@@ -16,8 +16,8 @@ public abstract class Character : MonoBehaviour
     protected float moveSpeed;
     protected Rigidbody characterBody;
     protected int life = 2;
-    protected bool canMove;
-    protected int number = 0;
+    [SerializeField]protected bool canMove;
+    [SerializeField]protected int number = 0;
     protected bool pastThreshold;
     private Vector3 enemyDirection;
     private int direction = 1;
@@ -44,7 +44,7 @@ public abstract class Character : MonoBehaviour
             direction = -1;
         }
         moveSpeed *= direction;
-        canMove = true;
+        canMove = false;
     }
 
     // Update is called once per frame

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gnome : Character
+public class Gnome : Character,IDragable
 {
     private Vector3 initPosition;
     private bool returning;
@@ -85,5 +85,20 @@ public class Gnome : Character
         {
             Die();
         }
+    }
+
+    public void StartDrag(Transform refPos)
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void EndDrag(Transform target)
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public void ActionDrop(Card _card)
+    {
+        Activate(_card.GetNumber());
     }
 }
