@@ -104,6 +104,7 @@ public class Gnome : Character,IDragable
         gameObject.SetActive(false);
     }
 
+
     public void StartDrag(Transform refPos)
     {
         //throw new System.NotImplementedException();
