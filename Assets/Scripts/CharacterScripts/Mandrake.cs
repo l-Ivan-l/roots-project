@@ -38,6 +38,7 @@ public class Mandrake : Character, EventListener<GameEvents>
     void OnEnable()
     {
         this.EventStartListening<GameEvents>();
+        
         switch(type)
         {
             case MandrakeType.EASY:

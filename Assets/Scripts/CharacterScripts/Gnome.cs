@@ -52,6 +52,7 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
         {
             Debug.Log("Collisioned with Mandrake");
             VFXPool.instance.SpawnImpactVFX(transform.position);
+            SFXPool.instance.PlayImpactSound();
             StopMovement();
             Character mandrake = _collision.gameObject.GetComponent<Character>();
             if(CanDamage(mandrake))

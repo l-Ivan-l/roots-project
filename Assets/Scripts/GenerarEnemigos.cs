@@ -136,6 +136,7 @@ public class GenerarEnemigos : MonoBehaviour
             break;
         }
         VFXPool.instance.SpawnInstantiateVFX(enemie.transform.position);
+        SFXPool.instance.PlayRespawnSound();
         enemie.SetActive(true);
         mandrakeBehavior.CanMove = true;
         hasActiveMandrake = true;
