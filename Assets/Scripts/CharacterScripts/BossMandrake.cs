@@ -6,7 +6,7 @@ public class BossMandrake : MonoBehaviour
 {
     public int life = 5;
     public int number = 0; //Change this
-    public MandrakeNumber visualNumber;
+    public VisualNumber visualNumber;
 
     void Start()
     {
@@ -17,12 +17,12 @@ public class BossMandrake : MonoBehaviour
     public void Damage()
     {
         life -= 1;
-        number = SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Boss);
-        visualNumber.SetNumber(number);
         if(life <= 0)
         {
             Die();
         }
+        number = SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Boss);
+        visualNumber.SetNumber(number);
     }
 
     public void Die()

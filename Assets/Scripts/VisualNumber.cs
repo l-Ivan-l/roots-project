@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MandrakeNumber : MonoBehaviour
+public class VisualNumber : MonoBehaviour
 {
     [SerializeField] private int num = 0;
     [SerializeField] private TextMeshPro txt_Number;
-    
+
     public void SetNumber(int _num)
     {
         num = _num;

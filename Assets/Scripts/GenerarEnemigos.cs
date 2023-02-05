@@ -135,6 +135,7 @@ public class GenerarEnemigos : MonoBehaviour
                 mandrakeBehavior.Number = SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Hard);
             break;
         }
+        VFXPool.instance.SpawnInstantiateVFX(enemie.transform.position);
         enemie.SetActive(true);
         mandrakeBehavior.CanMove = true;
         hasActiveMandrake = true;
@@ -148,7 +149,7 @@ public class GenerarEnemigos : MonoBehaviour
             SpawnEnemie();
         }
 
-        if(hasActiveMandrake || GameController.instance.win) return;
+        if(hasActiveMandrake || GameController.instance.win || GameController.instance.gameOver) return;
         if (TiempoActual> 0)
         {
             TiempoActual -= Time.deltaTime;

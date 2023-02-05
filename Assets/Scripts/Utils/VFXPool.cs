@@ -11,10 +11,10 @@ public class VFXPool : MonoBehaviour
     private int impactVFXPoolLength = 2;
     private List<ParticleSystem> impactVFXPool = new List<ParticleSystem>();
     //Activate Explosion VFX
-    [SerializeField] private GameObject ActivateVfxPrefab;
-    [SerializeField] private Transform ActivateVFXContainer;
-    private int ActivateVFXPoolLength = 3;
-    private List<ParticleSystem> ActivateVFXPool = new List<ParticleSystem>();
+    [SerializeField] private GameObject GnomeExplosionVfxPrefab;
+    [SerializeField] private Transform GnomeExplosionVfxContainer;
+    private int GnomeExplosionVfxPoolLength = 3;
+    private List<ParticleSystem> GnomeExplosionVfxPool = new List<ParticleSystem>();
     //Spawn VFX
     [SerializeField] private GameObject spawnVFXPrefab;
     [SerializeField] private Transform spawnVFXContainer;
@@ -43,9 +43,9 @@ public class VFXPool : MonoBehaviour
     void Start()
     {
         CreateImpactVFXPool();
-        CreateActivateVFXPool();
+        CreateGnomeExplosionVFXPool();
         CreateSpawnVFXPool();
-        CreateExplosionVFXPool();
+        CreateEnemyExplosionVFXPool();
     }
 
     void CreateImpactVFXPool()
@@ -60,15 +60,15 @@ public class VFXPool : MonoBehaviour
         }
     }
 
-    void CreateActivateVFXPool()
+    void CreateGnomeExplosionVFXPool()
     {
-        for (int i = 0; i < ActivateVFXPoolLength; i++)
+        for (int i = 0; i < GnomeExplosionVfxPoolLength; i++)
         {
-            ParticleSystem vegExp = Instantiate(ActivateVfxPrefab, Vector3.zero, Quaternion.identity, ActivateVFXContainer).GetComponent<ParticleSystem>();
+            ParticleSystem vegExp = Instantiate(GnomeExplosionVfxPrefab, Vector3.zero, Quaternion.identity, GnomeExplosionVfxContainer).GetComponent<ParticleSystem>();
             Quaternion vegRot = new Quaternion(0f, 0f, 0f, 0f);
             vegRot.eulerAngles = new Vector3(0f, 90f, 0f);
             vegExp.gameObject.transform.rotation = vegRot;
-            ActivateVFXPool.Add(vegExp);
+            GnomeExplosionVfxPool.Add(vegExp);
         }
     }
 
@@ -84,7 +84,7 @@ public class VFXPool : MonoBehaviour
         }
     }
 
-    void CreateExplosionVFXPool()
+    void CreateEnemyExplosionVFXPool()
     {
         for(int i = 0; i < explosionVFXPoolLength; i++)
         {
@@ -110,14 +110,14 @@ public class VFXPool : MonoBehaviour
         }
     }
 
-    public void SpawnActivateVFX(Vector3 _position)
+    public void SpawnGnomeExplosionVFX(Vector3 _position)
     {
-        for (int i = 0; i < ActivateVFXPool.Count; i++)
+        for (int i = 0; i < GnomeExplosionVfxPool.Count; i++)
         {
-            if (!ActivateVFXPool[i].isPlaying)
+            if (!GnomeExplosionVfxPool[i].isPlaying)
             {
-                ActivateVFXPool[i].transform.position = _position;
-                ActivateVFXPool[i].Play();
+                GnomeExplosionVfxPool[i].transform.position = _position;
+                GnomeExplosionVfxPool[i].Play();
                 break;
             }
         }
