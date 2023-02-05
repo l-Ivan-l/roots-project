@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 2598588405011171031}
   - component: {fileID: 2598588405011171026}
   m_Layer: 7
-  m_Name: MandrakeNumber
+  m_Name: VisualNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

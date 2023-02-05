@@ -9,11 +9,13 @@ public class Gnome : Character,IDragable
     public float returningSpeed = 7f;
 
     private GnomeSpawn spawn;
+    public VisualNumber visualNumber;
 
     new void Awake()
     {
         character = CharacterType.GNOME;
         initPosition = transform.position;
+        visualNumber.SetNumber(number);
         base.Awake();
     }
 
@@ -25,6 +27,7 @@ public class Gnome : Character,IDragable
     public void Activate(int _number)
     {
         number = _number;
+        visualNumber.SetNumber(number);
         canMove = true;
     }
 
@@ -72,6 +75,7 @@ public class Gnome : Character,IDragable
         canMove = true;
         returning = true;
         number = 0;
+        visualNumber.SetNumber(number);
     }
 
     void CheckIfReturned()
@@ -116,6 +120,9 @@ public class Gnome : Character,IDragable
         StopMovement();
         if (spawn != null)
             spawn.DelaySpawn();
+
+        number = 0;
+        visualNumber.SetNumber(number);
         gameObject.SetActive(false);
     }
 
@@ -132,7 +139,8 @@ public class Gnome : Character,IDragable
 
     public void ActionDrop(Card _card)
     {
-        Activate(_card.GetNumber());
+        if(!returning)
+            Activate(_card.GetNumber());
     }
 
     public void OnDropAble()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mandrake : Character
+public class Mandrake : Character, EventListener<GameEvents>
 {
     public enum MandrakeType
     {
@@ -18,7 +18,7 @@ public class Mandrake : Character
     public float stunnedTime = 3f;
     public MandrakeType type;
 
-    public MandrakeNumber visualNumber;
+    public VisualNumber visualNumber;
 
     public bool CanMove
     {
@@ -37,6 +37,7 @@ public class Mandrake : Character
 
     void OnEnable()
     {
+        this.EventStartListening<GameEvents>();
         switch(type)
         {
             case MandrakeType.EASY:
@@ -59,6 +60,7 @@ public class Mandrake : Character
 
     void OnDisable()
     {
+        this.EventStopListening<GameEvents>();
         if(spawner != null)
             spawner.hasActiveMandrake = false;
     }
@@ -127,6 +129,28 @@ public class Mandrake : Character
         {
             spawner.IncreaseRowTime();
             Die();
+        }
+    }
+
+    public void OnGEvent(GameEvents e)
+    {
+        switch(e.eventType)
+        {
+            case GameEventType.gameOver:
+                Debug.Log("The game is game over");
+            break;
+
+            case GameEventType.pause:
+                Debug.Log("The game is pause");
+            break;
+
+            case GameEventType.resume:
+                Debug.Log("The game is resume");
+            break;
+
+            case GameEventType.win:
+                Die();
+            break;
         }
     }
 }

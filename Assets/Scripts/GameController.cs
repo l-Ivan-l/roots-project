@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     public void Win()
     {
         win = true;
-        Time.timeScale = 0f;
+        GameEvents.Trigger(GameEventType.win);
     }
 
     public void GameOver()

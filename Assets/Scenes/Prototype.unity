@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4284ffc45bc8dae428d4375490d56db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5
+  life: 1
   number: 0
   visualNumber: {fileID: 1738880175}
 --- !u!1001 &137517348

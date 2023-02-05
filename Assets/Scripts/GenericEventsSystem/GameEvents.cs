@@ -7,7 +7,8 @@ public enum GameEventType
 {
     pause,
     resume,
-    gameOver
+    gameOver, 
+    win
 }
 public struct GameEvents 
 {
