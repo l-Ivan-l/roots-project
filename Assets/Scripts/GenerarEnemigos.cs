@@ -33,7 +33,7 @@ public class GenerarEnemigos : MonoBehaviour
 
         if(road == Road.center)
         {
-            TiempoActual = 3;
+            TiempoActual = 4f;
         } 
         else
         {
