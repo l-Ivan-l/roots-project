@@ -6,6 +6,7 @@ public class GnomeSpawn : MonoBehaviour
 {
     [SerializeField] Gnome gnome;
     [SerializeField] float timeToRespawn = 5;
+ 
 
     private void Start()
     {
@@ -13,9 +14,12 @@ public class GnomeSpawn : MonoBehaviour
     }
     void Respawn()
     {
+        if(GameController.instance.gameOver) return;
+
         gnome.gameObject.transform.position = transform.position;
         gnome.gameObject.transform.rotation = transform.rotation;
         gnome.Number = 0;
+        VFXPool.instance.SpawnInstantiateVFX(gnome.transform.position);
         gnome.gameObject.SetActive(true);
     }
 

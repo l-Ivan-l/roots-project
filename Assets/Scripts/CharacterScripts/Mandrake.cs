@@ -88,6 +88,7 @@ public class Mandrake : Character, EventListener<GameEvents>
         }
         if(_collision.gameObject.CompareTag("KingGnome"))
         {
+            screenShake.TriggerShake(0.5f, 0.5f);
             pastThreshold = false;
             StopMovement();
             KingGnome kingGnome = _collision.gameObject.GetComponent<KingGnome>();
@@ -137,7 +138,7 @@ public class Mandrake : Character, EventListener<GameEvents>
         switch(e.eventType)
         {
             case GameEventType.gameOver:
-                Debug.Log("The game is game over");
+                StopMovement();
             break;
 
             case GameEventType.pause:

@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         gameOver = true;
-        Time.timeScale = 0f;
+        GameEvents.Trigger(GameEventType.gameOver);
+        //Time.timeScale = 0f;
     }
 }

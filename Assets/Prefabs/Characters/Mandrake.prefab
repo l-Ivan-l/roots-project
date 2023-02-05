@@ -130,9 +130,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initalSpeed: 1
-  speedMultiplier: 2
+  speedMultiplier: 8
   canMove: 0
   number: 0
+  stunnedTime: 3
   type: 0
   visualNumber: {fileID: 2625632971915220839}
   spawner: {fileID: 0}

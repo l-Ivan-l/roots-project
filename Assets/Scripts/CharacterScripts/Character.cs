@@ -21,6 +21,7 @@ public abstract class Character : MonoBehaviour
     protected bool pastThreshold;
     private Vector3 enemyDirection;
     private int direction = 1;
+    protected ScreenShake screenShake;
 
     public int Life
     {
@@ -36,6 +37,7 @@ public abstract class Character : MonoBehaviour
 
     public void Awake()
     {
+        screenShake = Camera.main.GetComponent<ScreenShake>();
         characterBody = this.GetComponent<Rigidbody>();
         movementDirection = new Vector3(1,0,0);
         moveSpeed = initalSpeed;
@@ -87,6 +89,7 @@ public abstract class Character : MonoBehaviour
     protected virtual void Die()
     {
         StopMovement();
+        VFXPool.instance.SpawnExplosionVFX(transform.position);
         gameObject.SetActive(false);
     }
 
