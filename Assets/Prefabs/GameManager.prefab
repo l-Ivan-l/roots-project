@@ -514,6 +514,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 5964003227902813237}
   maxVolume: 0.1
+  winMusic: {fileID: 8300000, guid: 24d2cd193afe59a4c99c4f557c82fda0, type: 3}
+  loseMusic: {fileID: 8300000, guid: 30b1d45a668075a45851fd91e487ba02, type: 3}
   ambientSounds:
   - {fileID: 8300000, guid: 387b29183b89fbf4fb7d5a10036902d5, type: 3}
   - {fileID: 8300000, guid: fb1f079e0733d8541ac540c33d8334b4, type: 3}
@@ -559,3 +561,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6442a0d6fd69c454d910119fdeaa39d9, type: 3}
   gnomeWinVolume: 1
   gnomeWinSound: {fileID: 8300000, guid: 0e2eae154c1de26438ebfabeac0f20b7, type: 3}
+  mandrakeWinVolume: 1
+  mandrakeWinSound: {fileID: 0}
