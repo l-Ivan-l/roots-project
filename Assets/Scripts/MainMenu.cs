@@ -8,6 +8,17 @@ public class MainMenu : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
+    void Start()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if(currentScene == "GameOver" || currentScene == "Win")
+        {
+            GameController.instance.gameOver = false;
+            GameController.instance.win = false;
+            StartCoroutine(ReturnToMenu());
+        }
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -37,6 +48,17 @@ public class MainMenu : MonoBehaviour
 
         StartCoroutine(LoadLevel("MainMenu"));
     }
+
+    public void EscenaGameOver()
+    {
+        StartCoroutine(LoadLevel("GameOver"));
+    }
+
+    public void EsceneWin()
+    {
+        StartCoroutine(LoadLevel("Win"));
+    }
+
     public void Cerrar()
     {
         Debug.Log("Cerrar");
@@ -48,6 +70,12 @@ public class MainMenu : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator ReturnToMenu()
+    {
+        yield return new WaitForSeconds(5f);
+        EscenaMainMenu();
     }
    
 }
