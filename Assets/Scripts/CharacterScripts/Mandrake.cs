@@ -18,6 +18,8 @@ public class Mandrake : Character
     private float stunnedTime = 1f;
     public MandrakeType type;
 
+    public MandrakeNumber visualNumber;
+
     public bool CanMove
     {
         get{return canMove;}
@@ -25,6 +27,7 @@ public class Mandrake : Character
     }
 
     [HideInInspector] public GenerarEnemigos spawner;
+    public Material[] mandrakeMat;
     
     new void Awake()
     {
@@ -38,16 +41,20 @@ public class Mandrake : Character
         {
             case MandrakeType.EASY:
                 life = 1;
+                GetComponent<Renderer>().material = mandrakeMat[0];
             break;
 
             case MandrakeType.MEDIUM:
                 life = 2;
+                GetComponent<Renderer>().material = mandrakeMat[1];
             break;
 
             case MandrakeType.HARD:
                 life = 3;
+                GetComponent<Renderer>().material = mandrakeMat[2];
             break;
         }
+        visualNumber.SetNumber(number);
     }
 
     void OnDisable()
@@ -81,6 +88,8 @@ public class Mandrake : Character
         {
             pastThreshold = false;
             StopMovement();
+            KingGnome kingGnome = _collision.gameObject.GetComponent<KingGnome>();
+            kingGnome.Damage();
             Die();
         }
     }

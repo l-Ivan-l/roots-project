@@ -140,7 +140,8 @@ GameObject:
   - component: {fileID: 8572608098122452279}
   - component: {fileID: 8572608098122452278}
   - component: {fileID: 8572608098122452272}
-  - component: {fileID: 1389014672283115048}
+  - component: {fileID: 4767090264386279637}
+  - component: {fileID: 5463194066916943778}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -199,7 +200,7 @@ MonoBehaviour:
   layerPosition:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &1389014672283115048
+--- !u!114 &4767090264386279637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,6 +209,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 8572608098122452277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 677920bfe49bb154786a2ad0ad1dcbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 786cd82171205df479c4c63411642e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minNumberEasy: 1
+  maxNumberEasy: 5
+  easyPool: 
+  minNumberMedium: 6
+  maxNumberMedium: 10
+  mediumPool: 
+  minNumberHard: 11
+  maxNumberHard: 15
+  hardPool: 
+  minNumberBoss: 16
+  maxNumberBoss: 20
+  bossPool: 
+--- !u!114 &5463194066916943778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8572608098122452277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39c34e1f36cedd54d858159a29fffe28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

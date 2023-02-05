@@ -17,6 +17,6 @@ public class KingGnome : MonoBehaviour
 
     public void Die()
     {
-        //GameOver
+        GameController.instance.GameOver();
     }
 }

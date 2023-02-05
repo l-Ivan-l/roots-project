@@ -12,7 +12,9 @@ public class GenerarEnemigos : MonoBehaviour
         left, right,center
     }
 
-    [SerializeField] List<GameObject> EnemiList = new List<GameObject>();
+    [SerializeField] List<GameObject> easyEnemiList = new List<GameObject>();
+    [SerializeField] List<GameObject> mediumEnemiList = new List<GameObject>();
+    [SerializeField] List<GameObject> hardEnemiList = new List<GameObject>();
     [SerializeField] public GameObject enemigos;
     [SerializeField] int EnemieNum = 5;
     [SerializeField]  float TiempoMax =10;
@@ -22,15 +24,21 @@ public class GenerarEnemigos : MonoBehaviour
     [SerializeField] Transform parent;
 
     public bool hasActiveMandrake;
+    public BossMandrake bossMandrake;
     // Start is called before the first frame update
     void Start()
     {
 
        CreatePool();
 
-        TiempoActual = TiempoMax;
-
-
+        if(road == Road.center)
+        {
+            TiempoActual = 3;
+        } 
+        else
+        {
+            TiempoActual = Random.Range(7, 20);
+        }
     }
 
     void CreatePool()
@@ -38,21 +46,72 @@ public class GenerarEnemigos : MonoBehaviour
         for(int i =0; i<EnemieNum; i++)
         {
             GameObject newEnemie = Instantiate(enemigos,transform. position, Quaternion.identity, parent);
+            Mandrake _mandrake = newEnemie.GetComponent<Mandrake>();
+            _mandrake.type = Mandrake.MandrakeType.EASY;
             newEnemie.SetActive(false);
-            EnemiList.Add(newEnemie);
+            easyEnemiList.Add(newEnemie);
+        }
+        for(int i =0; i<EnemieNum; i++)
+        {
+            GameObject newEnemie = Instantiate(enemigos,transform. position, Quaternion.identity, parent);
+            Mandrake _mandrake = newEnemie.GetComponent<Mandrake>();
+            int _type = Random.Range(0, 2);
+            if(_type == 0) _mandrake.type = Mandrake.MandrakeType.EASY;
+            if(_type == 1) _mandrake.type = Mandrake.MandrakeType.MEDIUM;
+            newEnemie.SetActive(false);
+            mediumEnemiList.Add(newEnemie);
+        }
+        for(int i =0; i<EnemieNum; i++)
+        {
+            GameObject newEnemie = Instantiate(enemigos,transform. position, Quaternion.identity, parent);
+            Mandrake _mandrake = newEnemie.GetComponent<Mandrake>();
+            int _type = Random.Range(0, 3);
+            if(_type == 0) _mandrake.type = Mandrake.MandrakeType.EASY;
+            if(_type == 1) _mandrake.type = Mandrake.MandrakeType.MEDIUM;
+            if(_type == 2) _mandrake.type = Mandrake.MandrakeType.HARD;
+            newEnemie.SetActive(false);
+            hardEnemiList.Add(newEnemie);
         }
     }
     
 
     GameObject GetNextInPool()
     {
-        for(int i=0; i< EnemiList.Count; i++)
+        switch(bossMandrake.life)
         {
-            if (!EnemiList[i].activeSelf)
-            {
-                return EnemiList[i];
-            }
+            case 5:
+            case 4:
+                for(int i=0; i< easyEnemiList.Count; i++)
+                {
+                    if (!easyEnemiList[i].activeSelf)
+                    {
+                        return easyEnemiList[i];
+                    }
+                }
+            break;
+
+            case 3:
+            case 2:
+                for(int i=0; i< mediumEnemiList.Count; i++)
+                {
+                    if (!mediumEnemiList[i].activeSelf)
+                    {
+                        return mediumEnemiList[i];
+                    }
+                }
+            break;
+
+            case 1:
+                for(int i=0; i< hardEnemiList.Count; i++)
+                {
+                    if (!hardEnemiList[i].activeSelf)
+                    {
+                        return hardEnemiList[i];
+                    }
+                }
+            break;
         }
+        
         return null;
     }
 
@@ -61,11 +120,22 @@ public class GenerarEnemigos : MonoBehaviour
         GameObject enemie = GetNextInPool();
 
         enemie.transform.position = transform.position;
-        enemie.SetActive(true);
 
         Mandrake mandrakeBehavior = enemie.GetComponent<Mandrake>();
         mandrakeBehavior.spawner = this;
-        mandrakeBehavior.Number = 9; //Change this depending on mandrake type
+        switch(mandrakeBehavior.type)
+        {
+            case Mandrake.MandrakeType.EASY:
+                mandrakeBehavior.Number = SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Easy);
+            break;
+            case Mandrake.MandrakeType.MEDIUM:
+                mandrakeBehavior.Number = SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Medium);
+            break;
+            case Mandrake.MandrakeType.HARD:
+                mandrakeBehavior.Number = SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Hard);
+            break;
+        }
+        enemie.SetActive(true);
         mandrakeBehavior.CanMove = true;
         hasActiveMandrake = true;
     }
@@ -94,6 +164,6 @@ public class GenerarEnemigos : MonoBehaviour
 
     public void IncreaseRowTime()
     {
-        TiempoActual += 5f;
+        TiempoActual += 7.5f;
     }
 }

@@ -87,6 +87,15 @@ public class Gnome : Character,IDragable
         return false;
     }
 
+    bool CanDamageBoss(BossMandrake _boss)
+    {
+        if(number * number == _boss.number)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public override void Damage()
     {
         life -= 1;
