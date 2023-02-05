@@ -136,6 +136,7 @@ public class GenerarEnemigos : MonoBehaviour
             break;
         }
         VFXPool.instance.SpawnInstantiateVFX(enemie.transform.position);
+        SFXPool.instance.PlayRespawnSound();
         enemie.SetActive(true);
         mandrakeBehavior.CanMove = true;
         hasActiveMandrake = true;
@@ -144,11 +145,6 @@ public class GenerarEnemigos : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) 
-        {
-            SpawnEnemie();
-        }
-
         if(hasActiveMandrake || GameController.instance.win || GameController.instance.gameOver) return;
         if (TiempoActual> 0)
         {

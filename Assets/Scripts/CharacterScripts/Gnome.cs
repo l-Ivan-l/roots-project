@@ -11,6 +11,8 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
     private GnomeSpawn spawn;
     public VisualNumber visualNumber;
 
+    public Animator gnomeAnimator;
+
     new void Awake()
     {
         character = CharacterType.GNOME;
@@ -39,6 +41,7 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
         number = _number;
         visualNumber.SetNumber(number);
         canMove = true;
+        gnomeAnimator.SetBool("canMove", canMove);
     }
 
     public void SetSpawn(GnomeSpawn _spawn)
@@ -52,6 +55,7 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
         {
             Debug.Log("Collisioned with Mandrake");
             VFXPool.instance.SpawnImpactVFX(transform.position);
+            SFXPool.instance.PlayImpactSound();
             StopMovement();
             Character mandrake = _collision.gameObject.GetComponent<Character>();
             if(CanDamage(mandrake))
@@ -97,6 +101,7 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
         if(returning && transform.position.x <= initPosition.x)
         {
             StopMovement();
+            gnomeAnimator.SetBool("canMove", canMove);
             returning = false;
             moveSpeed = initalSpeed;
         }
@@ -132,12 +137,13 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
     protected override void Die()
     {
         StopMovement();
-        if (spawn != null && !GameController.instance.gameOver)
+        if (spawn != null && !GameController.instance.gameOver && !GameController.instance.win )
             spawn.DelaySpawn();
 
         number = 0;
         visualNumber.SetNumber(number);
         VFXPool.instance.SpawnGnomeExplosionVFX(transform.position);
+        SFXPool.instance.PlayGnomeDieSound();
         gameObject.SetActive(false);
     }
 

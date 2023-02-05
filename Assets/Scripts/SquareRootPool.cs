@@ -40,10 +40,6 @@ public class SquareRootPool : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
         CreatePool(easyPool, minNumberEasy, maxNumberEasy);
         CreatePool(mediumPool, minNumberMedium, maxNumberMedium);
         CreatePool(hardPool, minNumberHard, maxNumberHard);

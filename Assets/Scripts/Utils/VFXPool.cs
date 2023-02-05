@@ -110,13 +110,14 @@ public class VFXPool : MonoBehaviour
         }
     }
 
-    public void SpawnGnomeExplosionVFX(Vector3 _position)
+    public void SpawnGnomeExplosionVFX(Vector3 _position, bool isKing = false)
     {
         for (int i = 0; i < GnomeExplosionVfxPool.Count; i++)
         {
             if (!GnomeExplosionVfxPool[i].isPlaying)
             {
                 GnomeExplosionVfxPool[i].transform.position = _position;
+                if(isKing) GnomeExplosionVfxPool[i].transform.localScale = new Vector3(2,2,2);
                 GnomeExplosionVfxPool[i].Play();
                 break;
             }
@@ -136,13 +137,14 @@ public class VFXPool : MonoBehaviour
         }
     }
 
-    public void SpawnExplosionVFX(Vector3 _position)
+    public void SpawnExplosionVFX(Vector3 _position, bool isBoss = false)
     {
         for (int i = 0; i < explosionVFXPool.Count; i++)
         {
             if (!explosionVFXPool[i].isPlaying)
             {
                 explosionVFXPool[i].transform.position = _position;
+                if(isBoss) explosionVFXPool[i].transform.localScale = new Vector3(2,2,2);
                 explosionVFXPool[i].Play();
                 break;
             }

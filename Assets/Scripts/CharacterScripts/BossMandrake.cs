@@ -7,6 +7,7 @@ public class BossMandrake : MonoBehaviour
     public int life = 5;
     public int number = 0; //Change this
     public VisualNumber visualNumber;
+    public GameObject mandrakeMesh;
 
     void Start()
     {
@@ -27,6 +28,8 @@ public class BossMandrake : MonoBehaviour
 
     public void Die()
     {
+        mandrakeMesh.SetActive(false);
+        VFXPool.instance.SpawnExplosionVFX(transform.position, true);
         GameController.instance.Win();
     }
 }

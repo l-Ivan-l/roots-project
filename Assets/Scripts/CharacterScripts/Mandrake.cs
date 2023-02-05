@@ -19,6 +19,7 @@ public class Mandrake : Character, EventListener<GameEvents>
     public MandrakeType type;
 
     public VisualNumber visualNumber;
+    public Renderer mandrakeRenderer;
 
     public bool CanMove
     {
@@ -28,6 +29,9 @@ public class Mandrake : Character, EventListener<GameEvents>
 
     [HideInInspector] public GenerarEnemigos spawner;
     public Material[] mandrakeMat;
+
+    public Animator mandrakeAnimator;
+    private bool stunned;
     
     new void Awake()
     {
@@ -38,21 +42,22 @@ public class Mandrake : Character, EventListener<GameEvents>
     void OnEnable()
     {
         this.EventStartListening<GameEvents>();
+        
         switch(type)
         {
             case MandrakeType.EASY:
                 life = 1;
-                GetComponent<Renderer>().material = mandrakeMat[0];
+                mandrakeRenderer.material = mandrakeMat[0];
             break;
 
             case MandrakeType.MEDIUM:
                 life = 2;
-                GetComponent<Renderer>().material = mandrakeMat[1];
+                mandrakeRenderer.material = mandrakeMat[1];
             break;
 
             case MandrakeType.HARD:
                 life = 3;
-                GetComponent<Renderer>().material = mandrakeMat[2];
+                mandrakeRenderer.material = mandrakeMat[2];
             break;
         }
         visualNumber.SetNumber(number);
@@ -99,8 +104,12 @@ public class Mandrake : Character, EventListener<GameEvents>
 
     IEnumerator Stunned()
     {
+        stunned = true;
+        mandrakeAnimator.SetBool("stunned", stunned);
         yield return new WaitForSeconds(stunnedTime);
         canMove = true;
+        stunned = false;
+        mandrakeAnimator.SetBool("stunned", stunned);
     }
 
     void Knockback()

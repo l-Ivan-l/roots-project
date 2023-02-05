@@ -18,18 +18,23 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Application.targetFrameRate = 60;
     }
 
     public void Win()
     {
         win = true;
         GameEvents.Trigger(GameEventType.win);
+        SFXPool.instance.PlayGnomeWinSound();
+        SFXPool.instance.PlayMandrakeDieSound();
     }
 
     public void GameOver()
     {
         gameOver = true;
         GameEvents.Trigger(GameEventType.gameOver);
+        SFXPool.instance.PlayMandrakeWinSound();
+        SFXPool.instance.PlayGnomeDieSound();
         //Time.timeScale = 0f;
     }
 }
