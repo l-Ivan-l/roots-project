@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public bool win;
     public bool gameOver;
+    public MainMenu Menu;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
         GameEvents.Trigger(GameEventType.win);
         SFXPool.instance.PlayGnomeWinSound();
         SFXPool.instance.PlayMandrakeDieSound();
+        StartCoroutine(WaitToChangeScene());
     }
 
     public void GameOver()
@@ -36,5 +38,19 @@ public class GameController : MonoBehaviour
         SFXPool.instance.PlayMandrakeWinSound();
         SFXPool.instance.PlayGnomeDieSound();
         //Time.timeScale = 0f;
+        StartCoroutine(WaitToChangeScene());
+    }
+
+    IEnumerator WaitToChangeScene()
+    {
+        yield return new WaitForSeconds(3f);
+        if(gameOver)
+        {
+            Menu.EscenaGameOver();
+        }
+        if(win)
+        {
+            Menu.EsceneWin();
+        }
     }
 }
