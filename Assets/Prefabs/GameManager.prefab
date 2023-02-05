@@ -213,15 +213,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minNumberEasy: 1
-  maxNumberEasy: 5
+  maxNumberEasy: 3
   easyPool: 
-  minNumberMedium: 6
-  maxNumberMedium: 10
+  minNumberMedium: 2
+  maxNumberMedium: 6
   mediumPool: 
-  minNumberHard: 11
-  maxNumberHard: 15
+  minNumberHard: 5
+  maxNumberHard: 10
   hardPool: 
-  minNumberBoss: 16
+  minNumberBoss: 10
   maxNumberBoss: 20
   bossPool: 
 --- !u!114 &5463194066916943778
@@ -236,3 +236,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c34e1f36cedd54d858159a29fffe28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  win: 0
+  gameOver: 0

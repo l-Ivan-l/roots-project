@@ -56,6 +56,8 @@ public class Gnome : Character,IDragable
         {
             pastThreshold = false;
             StopMovement();
+            BossMandrake boss = _collision.gameObject.GetComponent<BossMandrake>();
+            boss.Damage();
             Die();
         }
     }
@@ -66,6 +68,7 @@ public class Gnome : Character,IDragable
         moveSpeed *= -1f;
         canMove = true;
         returning = true;
+        number = 0;
     }
 
     void CheckIfReturned()

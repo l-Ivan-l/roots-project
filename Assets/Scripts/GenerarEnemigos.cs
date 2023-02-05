@@ -148,7 +148,7 @@ public class GenerarEnemigos : MonoBehaviour
             SpawnEnemie();
         }
 
-        if(hasActiveMandrake) return;
+        if(hasActiveMandrake || GameController.instance.win) return;
         if (TiempoActual> 0)
         {
             TiempoActual -= Time.deltaTime;
@@ -156,7 +156,7 @@ public class GenerarEnemigos : MonoBehaviour
         else
         {
             SpawnEnemie();
-            TiempoMax = Random.Range(3, 10);
+            TiempoMax = Random.Range(6, 10);
             TiempoActual = TiempoMax;
         }
 
@@ -165,5 +165,22 @@ public class GenerarEnemigos : MonoBehaviour
     public void IncreaseRowTime()
     {
         TiempoActual += 7.5f;
+    }
+
+    public int GetNewNumber(Mandrake.MandrakeType type)
+    {
+        if(type == Mandrake.MandrakeType.EASY)
+        {
+            return SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Easy);
+        }
+        if(type == Mandrake.MandrakeType.MEDIUM)
+        {
+            return SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Medium);
+        }
+        if(type == Mandrake.MandrakeType.HARD)
+        {
+            return SquareRootPool.instance.GetNumberFromPool(DificultyLevel.Hard);
+        }
+        return 0;
     }
 }

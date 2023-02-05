@@ -11,11 +11,11 @@ public class Mandrake : Character
         HARD
     }
 
-    private float knockbackForce = 50f;
-    private Vector3 knockbackDirection = new Vector3(3f, 10f, 0f);
+    private float knockbackForce = 100f;
+    private Vector3 knockbackDirection = new Vector3(15f, 6f, 0f);
     private bool knockback;
     private float fallSpeed = 50f;
-    private float stunnedTime = 1f;
+    public float stunnedTime = 3f;
     public MandrakeType type;
 
     public MandrakeNumber visualNumber;
@@ -119,6 +119,8 @@ public class Mandrake : Character
         life -= 1;
         if(life > 0)
         {
+            number = spawner.GetNewNumber(type);
+            visualNumber.SetNumber(number);
             Knockback();
         } 
         else 
