@@ -57,7 +57,10 @@ public class Gnome : Character,IDragable
             pastThreshold = false;
             StopMovement();
             BossMandrake boss = _collision.gameObject.GetComponent<BossMandrake>();
-            boss.Damage();
+            if(CanDamageBoss(boss))
+            {
+                boss.Damage();
+            }
             Die();
         }
     }
