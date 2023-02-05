@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MandrakeMaterial
+  m_Name: HardMandrakeMaterial
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -119,8 +119,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8962264, g: 0.10568706, b: 0.3899888, a: 1}
-    - _Color: {r: 0.8962264, g: 0.10568703, b: 0.38998878, a: 1}
+    - _BaseColor: {r: 0.8980392, g: 0.10588237, b: 0.1368989, a: 1}
+    - _Color: {r: 0.8980392, g: 0.10588234, b: 0.13689888, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

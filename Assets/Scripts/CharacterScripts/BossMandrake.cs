@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossMandrake : MonoBehaviour
 {
     public int life = 5;
+    public int number = 0; //Change this
     
     public void Damage()
     {

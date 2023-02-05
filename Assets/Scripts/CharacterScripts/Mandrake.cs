@@ -4,22 +4,56 @@ using UnityEngine;
 
 public class Mandrake : Character
 {
+    public enum MandrakeType
+    {
+        EASY,
+        MEDIUM,
+        HARD
+    }
+
     private float knockbackForce = 50f;
     private Vector3 knockbackDirection = new Vector3(3f, 10f, 0f);
     private bool knockback;
     private float fallSpeed = 50f;
     private float stunnedTime = 1f;
+    public MandrakeType type;
 
     public bool CanMove
     {
         get{return canMove;}
         set{canMove = value;}
     }
+
+    [HideInInspector] public GenerarEnemigos spawner;
     
     new void Awake()
     {
         character = CharacterType.MANDRAKE;
         base.Awake();
+    }
+
+    void OnEnable()
+    {
+        switch(type)
+        {
+            case MandrakeType.EASY:
+                life = 1;
+            break;
+
+            case MandrakeType.MEDIUM:
+                life = 2;
+            break;
+
+            case MandrakeType.HARD:
+                life = 3;
+            break;
+        }
+    }
+
+    void OnDisable()
+    {
+        if(spawner != null)
+            spawner.hasActiveMandrake = false;
     }
 
     void Update()
@@ -32,7 +66,7 @@ public class Mandrake : Character
         if(_collision.gameObject.CompareTag("Gnome"))
         {
             Debug.Log("Collisioned with Gnome");
-            StopMovement();
+            //StopMovement();
         }
         if(_collision.gameObject.CompareTag("Floor"))
         {
@@ -80,6 +114,7 @@ public class Mandrake : Character
         } 
         else 
         {
+            spawner.IncreaseRowTime();
             Die();
         }
     }

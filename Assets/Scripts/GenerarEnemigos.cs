@@ -10,7 +10,6 @@ public class GenerarEnemigos : MonoBehaviour
     public  enum Road
     {
         left, right,center
-            
     }
 
     [SerializeField] List<GameObject> EnemiList = new List<GameObject>();
@@ -21,6 +20,8 @@ public class GenerarEnemigos : MonoBehaviour
     [SerializeField] private Road road;
 
     [SerializeField] Transform parent;
+
+    public bool hasActiveMandrake;
     // Start is called before the first frame update
     void Start()
     {
@@ -61,21 +62,23 @@ public class GenerarEnemigos : MonoBehaviour
 
         enemie.transform.position = transform.position;
         enemie.SetActive(true);
-        
+
         Mandrake mandrakeBehavior = enemie.GetComponent<Mandrake>();
-        mandrakeBehavior.Number = 9;
+        mandrakeBehavior.spawner = this;
+        mandrakeBehavior.Number = 9; //Change this depending on mandrake type
         mandrakeBehavior.CanMove = true;
+        hasActiveMandrake = true;
     }
 
 
-   void Update()
+    void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)) 
         {
             SpawnEnemie();
         }
 
-
+        if(hasActiveMandrake) return;
         if (TiempoActual> 0)
         {
             TiempoActual -= Time.deltaTime;
@@ -87,5 +90,10 @@ public class GenerarEnemigos : MonoBehaviour
             TiempoActual = TiempoMax;
         }
 
+    }
+
+    public void IncreaseRowTime()
+    {
+        TiempoActual += 5f;
     }
 }
