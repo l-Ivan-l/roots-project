@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 5964003227902813237}
-  maxVolume: 0.5
+  maxVolume: 0.1
   ambientSounds:
   - {fileID: 8300000, guid: 387b29183b89fbf4fb7d5a10036902d5, type: 3}
   - {fileID: 8300000, guid: fb1f079e0733d8541ac540c33d8334b4, type: 3}
@@ -547,3 +547,15 @@ MonoBehaviour:
   impactounds:
   - {fileID: 8300000, guid: cbb939f105956834e88a0c8e7015b68a, type: 3}
   - {fileID: 8300000, guid: 9f953cf23dd1b1f4388ef04a12fce470, type: 3}
+  mandrakeDieVolume: 1
+  mandrakeDieSounds:
+  - {fileID: 8300000, guid: 2149f6ba0a8c87048b237ab15851ec45, type: 3}
+  - {fileID: 8300000, guid: 855cccdd290e35e4281053db120b0530, type: 3}
+  - {fileID: 8300000, guid: 3219ee82e0bf75c418afbee53563a7e8, type: 3}
+  gnomeDieVolume: 1
+  gnomeDieSounds:
+  - {fileID: 8300000, guid: 5985a1c0392b2ec4cab110820f324ae3, type: 3}
+  - {fileID: 8300000, guid: cfca010c9c3de0640a38649f81d7547f, type: 3}
+  - {fileID: 8300000, guid: 6442a0d6fd69c454d910119fdeaa39d9, type: 3}
+  gnomeWinVolume: 1
+  gnomeWinSound: {fileID: 8300000, guid: 0e2eae154c1de26438ebfabeac0f20b7, type: 3}

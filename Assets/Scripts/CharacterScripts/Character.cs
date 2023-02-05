@@ -90,6 +90,7 @@ public abstract class Character : MonoBehaviour
     {
         StopMovement();
         VFXPool.instance.SpawnExplosionVFX(transform.position);
+        SFXPool.instance.PlayMandrakeDieSound();
         gameObject.SetActive(false);
     }
 

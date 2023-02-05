@@ -133,12 +133,13 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
     protected override void Die()
     {
         StopMovement();
-        if (spawn != null && !GameController.instance.gameOver)
+        if (spawn != null && !GameController.instance.gameOver && !GameController.instance.win )
             spawn.DelaySpawn();
 
         number = 0;
         visualNumber.SetNumber(number);
         VFXPool.instance.SpawnGnomeExplosionVFX(transform.position);
+        SFXPool.instance.PlayGnomeDieSound();
         gameObject.SetActive(false);
     }
 
