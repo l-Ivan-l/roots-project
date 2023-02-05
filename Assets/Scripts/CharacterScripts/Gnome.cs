@@ -11,6 +11,8 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
     private GnomeSpawn spawn;
     public VisualNumber visualNumber;
 
+    public Animator gnomeAnimator;
+
     new void Awake()
     {
         character = CharacterType.GNOME;
@@ -39,6 +41,7 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
         number = _number;
         visualNumber.SetNumber(number);
         canMove = true;
+        gnomeAnimator.SetBool("canMove", canMove);
     }
 
     public void SetSpawn(GnomeSpawn _spawn)
@@ -98,6 +101,7 @@ public class Gnome : Character,IDragable, EventListener<GameEvents>
         if(returning && transform.position.x <= initPosition.x)
         {
             StopMovement();
+            gnomeAnimator.SetBool("canMove", canMove);
             returning = false;
             moveSpeed = initalSpeed;
         }

@@ -8,6 +8,14 @@ public class MainMenu : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
 
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cerrar();
+        }
+    }
+
     public void EscenaInstrucciones()
     {
         StartCoroutine(LoadLevel("Instrucciones"));

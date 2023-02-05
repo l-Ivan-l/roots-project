@@ -5,6 +5,7 @@ using UnityEngine;
 public class KingGnome : MonoBehaviour
 {
     public int life = 3;
+    public GameObject gnomeMesh;
     
     public void Damage()
     {
@@ -17,6 +18,8 @@ public class KingGnome : MonoBehaviour
 
     public void Die()
     {
+        gnomeMesh.SetActive(false);
+        VFXPool.instance.SpawnGnomeExplosionVFX(transform.position, true);
         GameController.instance.GameOver();
     }
 }

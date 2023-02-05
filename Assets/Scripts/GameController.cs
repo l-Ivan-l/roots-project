@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Application.targetFrameRate = 60;
     }
 
     public void Win()

@@ -136,6 +136,9 @@ MonoBehaviour:
   number: 0
   returningSpeed: 7
   visualNumber: {fileID: 5313942715804518001}
+  gnomeAnimator: {fileID: 150890899937402882}
+  idleAnim: {fileID: 0}
+  walkAnim: {fileID: 0}
 --- !u!1001 &3689598103201123201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -216,6 +219,32 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3689598103201123201}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4608726394402191056 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ed470d48549482a4c9b7fdea047fda6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 3689598103201123201}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &150890899937402882
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4608726394402191056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be087e36f66e7a349990c8577dd85255, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1001 &7903501632425312419
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -137,11 +137,13 @@ MonoBehaviour:
   stunnedTime: 3
   type: 0
   visualNumber: {fileID: 2625632971915220839}
+  mandrakeRenderer: {fileID: 5602224511283557179}
   spawner: {fileID: 0}
   mandrakeMat:
-  - {fileID: 2100000, guid: e35d8ca1441a5874990e500dfe822902, type: 2}
-  - {fileID: 2100000, guid: 3ab91d7af571794449966440228a7820, type: 2}
-  - {fileID: 2100000, guid: 918461cd83d09d346a4957c73b3af88f, type: 2}
+  - {fileID: 2100000, guid: 3041b8d72705e144383cce1be65ebe86, type: 2}
+  - {fileID: 2100000, guid: 83978d66d90b3ed41918b6464b798ab3, type: 2}
+  - {fileID: 2100000, guid: ffb09f2c2237ba44dafc5d942715b762, type: 2}
+  mandrakeAnimator: {fileID: 3924615502813390462}
 --- !u!1001 &27044843061285301
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,6 +320,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d71a4c331a572a45802ca7175adacf4, type: 3}
+--- !u!23 &5602224511283557179 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9d71a4c331a572a45802ca7175adacf4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6520803392592834495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6250967639345418990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d71a4c331a572a45802ca7175adacf4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6520803392592834495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3924615502813390462
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250967639345418990}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f13549b256247e4a8260c43cc553221, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!4 &6770094819685763156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d71a4c331a572a45802ca7175adacf4,
