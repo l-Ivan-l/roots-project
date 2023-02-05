@@ -5,34 +5,41 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
+    public Animator transition;
+    public float transitionTime = 1f;
 
     public void EscenaInstrucciones()
     {
-        SceneManager.LoadScene("Instrucciones");
+        StartCoroutine(LoadLevel("Instrucciones"));
     }
 
 
     public void EscenaNivel()
     {
-        SceneManager.LoadScene("Nivel");
-
+        //SceneManager.LoadScene("Nivel");
+        StartCoroutine(LoadLevel("Prototype"));
     }
 
 
 
     public void EscenaMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
       
 
-
+        StartCoroutine(LoadLevel("MainMenu"));
     }
     public void Cerrar()
     {
         Debug.Log("Cerrar");
         Application.Quit();
+    }
+
+    IEnumerator LoadLevel(string sceneName)
+    {
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(sceneName);
     }
    
 }
